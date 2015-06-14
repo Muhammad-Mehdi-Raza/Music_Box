@@ -1,0 +1,124 @@
+﻿@model Term_Project.Models.UserMataData
+@{
+    ViewBag.Title = "Register";
+}
+
+<hgroup class="title">
+    <h1> @ViewBag.Title</h1>
+    <h2>    Create a new account</h2>
+</hgroup>
+
+<script>
+    function checkPass() {
+        //Store the password field objects into variables ...
+        var pass1 = document.getElementById('pass1');
+        var pass2 = document.getElementById('pass2');
+        //Store the Confimation Message Object ...
+        var message = document.getElementById('confirmMessage');
+        //Set the colors we will be using ...
+        var goodColor = "#66cc66";
+        var badColor = "#ff6666";
+        //Compare the values in the password field 
+        //and the confirmation field
+        if (pass1.value == pass2.value) {
+            //The passwords match. 
+            //Set the color to the good color and inform
+            //the user that they have entered the correct password 
+            pass2.style.backgroundColor = goodColor;
+            message.style.color = goodColor;
+            message.innerHTML = "Passwords Match!"
+            return true;
+        } else {
+            //The passwords do not match.
+            //Set the color to the bad color and
+            //notify the user.
+            pass2.style.backgroundColor = badColor;
+            message.style.color = badColor;
+            message.innerHTML = "Passwords Do Not Match!"
+
+        }
+    }
+</script>
+        <div style="width:60%; margin-left:20%">
+            @using (Html.BeginForm(new { @class = "form-horizontal", onsubmit = "return checkPass();", align = "center" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>Registration Form</legend>
+                    <ul>
+                        <li>
+                            Enter Your Name:
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "required", id="UserName" })
+                            @Html.ValidationMessageFor(model => model.UserName)
+                        
+                        <input type="button" id="b1" value="Check"/>
+                            <div id="result"></div>
+                        </li>
+
+
+                        <br />
+                        <li>
+                            Enter Password :
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "required", id = "pass1" })
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </li>
+                        <br />
+                        <li>
+                            Confirm Password :
+                            @Html.LabelFor(m => m.VerifiedPassword)
+                            @Html.PasswordFor(m => m.VerifiedPassword, new { @class = "form-control", required = "required", id = "pass2", onkeyup = "checkPass(); return false;" })
+
+                            <span id="confirmMessage" class="confirmMessage"></span>
+
+                            @Html.ValidationMessageFor(model => model.VerifiedPassword)
+                        </li>
+                        <br />
+                    </ul>
+                    <input type="submit" value="Register" class="btn btn-primary" style="margin-left:30%;width:33%" />
+                </fieldset>
+
+                <p>
+                    <br>
+                    @Html.ActionLink("Login", "Login") if you Already have an account.
+                </p>
+            }
+        </div>
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<script>
+
+    $(document).ready(function () {
+        //alert("Mehdi");
+        //$('#result').hide();
+
+        $('#b1').click(function () {
+
+            var userName = $('#UserName').val();
+
+            //alert('User Name ='+ userName);
+            //$('#result').show();
+            $.getJSON("/Account/CheckUserName?UserName=" + userName, function (data) {
+                //$('#result').hide();
+                if (data) {
+                    $('#result').text("User Name is Available");
+
+                }
+                else {
+                    $('#result').text("User Name is NOT available");
+                    username.Val() = "";
+                }
+            });
+
+        });
+
+    });
+</script>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

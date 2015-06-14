@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>
+    <div>
+        <form class="navbar-form navbar-left center-block" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" id="ghouri" placeholder="Search" />
+                <button type="submit" class="btn btn-black"> Search </button>
+            </div>
+
+        </form>
+    </div>
+
+    <div id="d1"></div>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+
+    <script type="text/javascript">
+        $('#ghouri').change(function () //Input id #
+        {
+            var value = $('#ghouri').val();
+
+            $('#d1').load('/Song/category?cat=' + value);//div id
+        });
+
+    </script>
+
+
+</body>
+</html>

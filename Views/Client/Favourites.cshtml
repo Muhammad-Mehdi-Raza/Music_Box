@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Favourite>
+@using Term_Project.Models
+@{
+    ViewBag.Title = "Favourites";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Favourites</h2>
+
+<div class="container">
+    <table class="table table-bordered table-hover" >
+
+        <tr> <th>- Song Id -</th>  <th> Title </th><th>- Uploaded By -</th></tr>
+
+        @{
+            foreach (Favourite x in Model)
+            {
+                <tr> <td>@x.SongId</td>  <td>@x.SongTitle</td>  <td>@x.Uploader</td></tr>
+            }
+        }
+     </table>
+        
+            @{
+                foreach (Favourite j in Model)
+                {
+                    String uploader = j.Uploader;
+                    String title = j.SongTitle;
+                    String down = title+".mp3";
+                    
+                    if (title != "Thumbs.db")
+                    {
+                        <div align="center">
+                            <h3>@title</h3><br /> <h4>Uploaded by @uploader</h4>
+
+                            <audio controls="controls" id="myaudio">
+                                <source src="@("../Songs/" + uploader + "/" + title + ".mp3")" type="audio/mpeg" />
+                            </audio>
+                            <a href="~/Song/Remove?fileName=@title">   <input class="btn btn-primary" type="button" value="Remove from Favourites"> </a>    <a href="~/Song/Download?fileName=@down&uploader=@uploader"> <input class="btn btn-danger" type="button" value="Download"> </a>
+
+                        </div>
+                    }
+                }
+            }
+      </div>

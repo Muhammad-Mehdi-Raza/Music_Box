@@ -1,0 +1,58 @@
+﻿@model String[]
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "GetAll";
+}
+
+<script>
+    var vid = document.getElementById("myaudio");
+
+    function playVid() {
+        vid.play();
+    }
+
+    function pauseVid() {
+        vid.pause();
+    }
+</script>
+
+
+<h2>My All Uploads</h2>
+@{
+    foreach (String s in Model)
+    {
+        if (s != "Thumbs.db")
+        {
+            <div align="center">
+                <h3>@s</h3><br /> <h4>Uploaded by @Session["name"]</h4>
+
+                <audio controls="controls" id="myaudio">
+                    <source src="@("../Songs/" + Session["name"] + "/" + s)" type="audio/mpeg" />
+                </audio>
+
+                <a href="~/Song/Favourite?fileName=@s">   <input class="btn btn-primary" type="button" value="Add to Favourites"> </a>      <a href="~/Song/Download?fileName=@s&uploader=@Session["name"]"> <input class="btn btn-danger" type="button" value="Download"> </a>
+
+                <div style="width:100%; height:auto;display:flexbox;background-color:rgba(129, 77, 29, 0.35)">
+                    @*<a href="/User/SavePlay?id=@s.Id" class="btn-xs btn-success" aria-label="Aligh Right"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to PlayList</a>
+            <a href="/User/Download?id=@s.Id" class="btn-xs btn-info"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>Download</a>
+            @foreach (Comment c in s.Comments)
+            {
+                <p style="padding-left:2em;font-weight:bold">@c.User.Name : @c.Comment1</p>
+
+            }*@
+                    <form class="navbar navbar-form" action="/User/AddComment" method="post">
+                        @*<input type="hidden" value="@ViewBag.loggedIn.Id" name="UserId">
+                <input type="hidden" value="@s.Id" name="SongId">*@
+                        <textarea name="Comment1" style="color:black; width:100%; min-height: 5px"></textarea>
+                        <input type="submit" class="btn-xs btn-info" value="Post Comment" style="float:right" />
+                    </form>
+                </div>
+
+                 <br><br />
+                @*<button onclick="playVid()" type="button" class="btn btn-primary">Play Video</button>
+                    <button onclick="pauseVid()" type="button" class="btn btn-danger">Pause Video</button><br>*@
+            </div>
+        }
+    }
+}

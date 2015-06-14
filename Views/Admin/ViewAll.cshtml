@@ -1,0 +1,31 @@
+﻿@using Term_Project.Models
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View All Songs</title>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+
+        <table class="table table-bordered table-hover">
+            <tr><th>Song Id</th><th>Title</th><th>Singer</th><th>Release Year</th><th>Update</th><th>Remove</th></tr>
+
+            @foreach (Song i in Model)
+            {
+                <tr><td>@i.Id</td><td>@i.Title</td><td>@i.Singer</td><td>@i.ReleaseYear</td><td><a href="@("../Admin/EditSong/" + i.Id)">   <input class="btn btn-primary" type="button" value="Edit"> </a> </td><td><a href="@("../Admin/DeleteSong/" + i.Id)">   <input class="btn btn-danger" type="button" value="Delete"> </a></td></tr>
+            }
+
+        </table>
+    </div>
+
+</body>
+</html>

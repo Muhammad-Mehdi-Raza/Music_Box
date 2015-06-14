@@ -1,0 +1,21 @@
+﻿@model List<Term_Project.Models.Song>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Category</title>
+</head>
+<body>
+    <div>
+        @foreach (var v in Model)
+        {
+            <div>@v.Title;</div>
+        }
+    </div>
+</body>
+</html>

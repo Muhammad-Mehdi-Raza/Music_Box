@@ -1,0 +1,32 @@
+﻿@using Term_Project.Models
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Users</title>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+
+        <table class="table table-bordered table-hover">
+            <tr><th>User ID</th><th>Name</th><th>Update</th><th>Remove</th></tr>
+
+            @foreach (UserProfile i in Model)
+            {
+                <tr><td>@i.UserId</td><td>@i.UserName</td><td> <a href="@("../Admin/EditUserProfile/" + i.UserId)">   <input class="btn btn-primary" type="button" value="Edit"> </a> </td><td><a href="@("../Admin/DeleteUserProfile/" + i.UserId)">   <input class="btn btn-danger" type="button" value="Delete"> </a></td></tr>
+            }
+
+
+
+        </table>
+
+      </div>
+</body>
+</html>
