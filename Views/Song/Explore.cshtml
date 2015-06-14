@@ -6,9 +6,9 @@
     foreach (var a in Model)
     {
         try { 
-        String[] filenames = System.IO.Directory.GetFiles(@"C:\Users\Einstein\Documents\Visual Studio 2013\Projects\Term Project\Term Project\Songs\" + a + @"\");
+        String[] filenames = System.IO.Directory.GetFiles(@"\Songs\" + a + @"\");
 
-        String subpath = @"C:\Users\Einstein\Documents\Visual Studio 2013\Projects\Term Project\Term Project\Songs\" + a + @"\";
+        String subpath = @"\Songs\" + a + @"\";
 
         for (int i = 0; i < filenames.Length; i++)
         {
@@ -23,7 +23,7 @@
                     <h3>@s</h3> <br /> <h4>Uploaded by @a</h4>
 
                     <audio controls="controls" id="myaudio">
-                        <source src="@("../Songs/" + a + "/" + s)" type="audio/mpeg" />
+                        <source src="@("~/Songs/" + a + "/" + s)" type="audio/mpeg" />
                     </audio>
                     
 

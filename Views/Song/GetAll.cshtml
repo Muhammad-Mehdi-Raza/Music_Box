@@ -28,7 +28,7 @@
                 <h3>@s</h3><br /> <h4>Uploaded by @Session["name"]</h4>
 
                 <audio controls="controls" id="myaudio">
-                    <source src="@("../Songs/" + Session["name"] + "/" + s)" type="audio/mpeg" />
+                    <source src="@("~/Songs/" + Session["name"] + "/" + s)" type="audio/mpeg" />
                 </audio>
 
                 <a href="~/Song/Favourite?fileName=@s">   <input class="btn btn-primary" type="button" value="Add to Favourites"> </a>      <a href="~/Song/Download?fileName=@s&uploader=@Session["name"]"> <input class="btn btn-danger" type="button" value="Download"> </a>
@@ -41,7 +41,7 @@
                 <p style="padding-left:2em;font-weight:bold">@c.User.Name : @c.Comment1</p>
 
             }*@
-                    <form class="navbar navbar-form" action="/User/AddComment" method="post">
+                    <form class="navbar navbar-form" action="#" method="post">
                         @*<input type="hidden" value="@ViewBag.loggedIn.Id" name="UserId">
                 <input type="hidden" value="@s.Id" name="SongId">*@
                         <textarea name="Comment1" style="color:black; width:100%; min-height: 5px"></textarea>

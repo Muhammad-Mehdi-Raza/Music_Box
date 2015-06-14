@@ -33,7 +33,7 @@
                             <h3>@title</h3><br /> <h4>Uploaded by @uploader</h4>
 
                             <audio controls="controls" id="myaudio">
-                                <source src="@("../Songs/" + uploader + "/" + title + ".mp3")" type="audio/mpeg" />
+                                <source src="@("~/Songs/" + uploader + "/" + title + ".mp3")" type="audio/mpeg" />
                             </audio>
                             <a href="~/Song/Remove?fileName=@title">   <input class="btn btn-primary" type="button" value="Remove from Favourites"> </a>    <a href="~/Song/Download?fileName=@down&uploader=@uploader"> <input class="btn btn-danger" type="button" value="Download"> </a>
 
