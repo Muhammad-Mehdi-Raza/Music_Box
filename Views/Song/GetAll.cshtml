@@ -31,7 +31,7 @@
                     <source src="@("~/Songs/" + Session["name"] + "/" + s)" type="audio/mpeg" />
                 </audio>
 
-                <a href="~/Song/Favourite?fileName=@s">   <input class="btn btn-primary" type="button" value="Add to Favourites"> </a>      <a href="~/Song/Download?fileName=@s&uploader=@Session["name"]"> <input class="btn btn-danger" type="button" value="Download"> </a>
+                <a href="~/Songs/Favourite?fileName=@s">   <input class="btn btn-primary" type="button" value="Add to Favourites"> </a>      <a href="~/Song/Download?fileName=@s&uploader=@Session["name"]"> <input class="btn btn-danger" type="button" value="Download"> </a>
 
                 <div style="width:100%; height:auto;display:flexbox;background-color:rgba(129, 77, 29, 0.35)">
                     @*<a href="/User/SavePlay?id=@s.Id" class="btn-xs btn-success" aria-label="Aligh Right"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to PlayList</a>

@@ -5,10 +5,11 @@
 
     foreach (var a in Model)
     {
-        try { 
-        String[] filenames = System.IO.Directory.GetFiles(@"\Songs\" + a + @"\");
+        try
+        {
+            String[] filenames = System.IO.Directory.GetFiles(@"~/Songs/" + a + @"/");
 
-        String subpath = @"\Songs\" + a + @"\";
+            String subpath = @"~/Songs/" + a + @"/";
 
         for (int i = 0; i < filenames.Length; i++)
         {
@@ -37,7 +38,7 @@
                     <p style="padding-left:2em;font-weight:bold">@c.User.Name : @c.Comment1</p>
 
                 }*@
-                        <form class="navbar navbar-form" action="/User/AddComment" method="post">
+                        <form class="navbar navbar-form" action="#" method="post">
                             @*<input type="hidden" value="@ViewBag.loggedIn.Id" name="UserId">
                     <input type="hidden" value="@s.Id" name="SongId">*@
                             <textarea name="Comment1" style="color:black; width:100%; min-height: 5px"></textarea>

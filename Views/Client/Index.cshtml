@@ -311,25 +311,6 @@
                             <audio controls="controls">
                                 <source src="~/Songs/cute.mp3" type="audio/mpeg" />
                             </audio>
-
-                            <button class="btn btn-primary">Add to Collection</button>          <button class="btn btn-danger">Download</button>
-
-                            <div style="width:100%; height:auto;display:flexbox;background-color:rgba(129, 77, 29, 0.35)">
-                                @*<a href="/User/SavePlay?id=@s.Id" class="btn-xs btn-success" aria-label="Aligh Right"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Add to PlayList</a>
-                                    <a href="/User/Download?id=@s.Id" class="btn-xs btn-info"><span class="glyphicon glyphicon-download" aria-hidden="true"></span>Download</a>
-                                    @foreach (Comment c in s.Comments)
-                                    {
-                                        <p style="padding-left:2em;font-weight:bold">@c.User.Name : @c.Comment1</p>
-
-                                    }*@
-                                <form class="navbar navbar-form" action="/User/AddComment" method="post">
-                                    @*<input type="hidden" value="@ViewBag.loggedIn.Id" name="UserId">
-                                        <input type="hidden" value="@s.Id" name="SongId">*@
-                                    <textarea name="Comment1" style="color:black; width:100%; min-height: 5px"></textarea>
-                                    <input type="submit" class="btn-xs btn-info" value="Post Comment" style="float:right" />
-                                </form>
-                            </div>
-
                             <hr>
                         </div>
                     </div>
