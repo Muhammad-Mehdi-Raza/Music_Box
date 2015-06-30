@@ -7,9 +7,12 @@
       <Diagram DiagramId="b539789efa474cf9a58013434f683267" Name="Diagram1">
         <EntityTypeShape EntityType="Database1Model.Favourite" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.Song" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.UserProfile" Width="1.5" PointX="1.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.UserProfile" Width="1.5" PointX="6.125" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="Database1Model.FK_Favourite_Song" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_Favourite_UserProfile" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Database1Model.Comment" Width="1.5" PointX="4" PointY="4.25" />
+        <AssociationConnector Association="Database1Model.FK_Comment_Song" />
+        <AssociationConnector Association="Database1Model.FK_Comment_UserProfile" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
